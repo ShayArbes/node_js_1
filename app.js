@@ -1,17 +1,4 @@
-// const fs = require('fs');
-// const lodash = require('lodash');
-// fs.readFile('data.txt', 'utf8', (err, data) => {
-//   if (err) throw err;
-//   let reverseData = lodash.reverse(data);
-//   let withoutRepetitions = lodash.uniq(data);
-//   console.log(data);
-//   console.log(data.length);
-//   console.log(reverseData);
-//   console.log(withoutRepetitions);
-  
 
-
-// });
 const fs = require('fs');
 const lodash = require('lodash');
 fs.readFile('data.txt', 'utf8', (err, data) => {
@@ -21,11 +8,21 @@ fs.readFile('data.txt', 'utf8', (err, data) => {
   let lengthData = reverseData.length
   reverseData =lodash.reverse(reverseData);
   reverseData =reverseData.join(' ');
-  let withoutRepetitions = lodash.uniq(data.split(" "));
+  let withoutRepetitions = lodash.uniq(lodash.words(data));
+  let uppercaseSpecial = withoutRepetitions.filter((ele)=>{
+    if(ele.length>5){
+        return ele;
+    }
+})
+uppercaseSpecial = uppercaseSpecial.map((ele) => ele.toUpperCase());
   withoutRepetitions = withoutRepetitions.join(' ');
   console.log(data);
-  console.log(lengthData);
+  console.log(lodash.words(data).length);
   console.log(reverseData);
+  console.log("          -----------------               ");
   console.log(withoutRepetitions);
+  console.log(lodash.words(withoutRepetitions).length);
+  console.log(uppercaseSpecial.join(' '));
+  
 });
 

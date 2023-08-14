@@ -2,19 +2,26 @@
 const Utils = require("./utils")
 const lodashModule = require("./lodashModule");
 const fs = require("fs")
+
 fs.readFile("data.txt", "utf8", (err, data) => {
   if (err) throw err;
+
+  let uppercaseSpecial  = Utils.uppercaseSpecial_(data)
+  let lengthWithoutRepetitions  = lodashModule.lengthWithoutRepetitions_(data)
+  let vowels  = Utils.vowels_(data);
 
   console.log(data);
   console.log(lodashModule.wordsLength(data));
   console.log(lodashModule.reverseData_(data));
   console.log("          -----------------               ");
   console.log(lodashModule.withoutRepetitions_(data));
-  console.log(lodashModule.lengthWithoutRepetitions_(data));
-  console.log(Utils.uppercaseSpecial_(data));
-  console.log(Utils.vowels_(data));
+  console.log(lengthWithoutRepetitions);
+  console.log(uppercaseSpecial);
+  console.log(vowels);
   
-    fs.writeFile('message.txt', 'Hello Node.js', (err) => {
+     
+
+    fs.writeFile('message.txt',uppercaseSpecial +"\n" +lengthWithoutRepetitions +"\n" + JSON.stringify(vowels) , (err) => {
     if (err) throw err;
     console.log('The file has been saved!');
     });

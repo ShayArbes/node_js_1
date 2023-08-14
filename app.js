@@ -11,7 +11,21 @@ fs.readFile("data.txt", "utf8", (err, data) => {
   console.log(lengthWithoutRepetitions_(data));
   console.log(uppercaseSpecial_(data));
   console.log(vowels_(data));
+  
+    fs.writeFile('message.txt', 'Hello Node.js', (err) => {
+    if (err) throw err;
+    console.log('The file has been saved!');
+    });
 });
+
+
+
+
+
+
+
+
+
 
 const wordsLength = (data) => {
   return lodash.words(data).length;
